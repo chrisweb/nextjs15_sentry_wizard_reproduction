@@ -51,8 +51,20 @@ Then you can use the command to launch the sentry wizard:
 npx @sentry/wizard@latest -i nextjs
 ```
 
+You get the warning about Turbo not being fully supported:
 
+> Warning: The Sentry SDK doesn't yet fully support Turbopack in dev mode. The SDK will not be loaded in the browser, and serverside instrumentation will be inaccurate or incomplete. Production builds will still fully work. To continue this setup, if you are using Turbopack, temporarily remove `--turbo` from your dev command until you have verified the SDK is working as expected.
 
+When the wizard is done, we remove the turbo flag from dev server command (as promised to the wizard):
 
+```json
+    "scripts": {
+        "dev": "next dev",
+        "dev-turbo": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+```
 
-
+(I added a new turbo-dev script as backup)
