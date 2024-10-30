@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 and sentry wizard
 
-## Getting Started
+This project uses Next.js 15, it has a typescript configuration file for Next.js (next.config.ts is a new feature that got introduced in Next.js)
 
-First, run the development server:
+The problem: when using the Sentry wizard and you have a next.config.ts file, then the wizard will still create a next.config.js file
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+What is expected: Sentry wizard should detect the next.config.ts file and edit it (and not create a separate next.config.js)
+
+## installation
+
+command to launch CNA:
+
+```shell
+npx create-next-app@canary ./ --use-npm --typescript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CNA Q&A:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+I didn't install ESLint and Tailwind to save time
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```shell
+√ Would you like to use ESLint? ... No
+√ Would you like to use Tailwind CSS? ... No
+√ Would you like your code inside a `src/` directory? ... No
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to use Turbopack for next dev? ... Yes
+√ Would you like to customize the import alias (@/* by default)? ... Yes
+√ What import alias would you like configured? ... @/*
+```
 
-## Learn More
+then command to launch the sentry wizard:
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npx @sentry/wizard@latest -i nextjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
