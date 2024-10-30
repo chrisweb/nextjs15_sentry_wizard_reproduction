@@ -28,7 +28,24 @@ I didn't install ESLint and Tailwind to save time
 √ What import alias would you like configured? ... @/*
 ```
 
-then command to launch the sentry wizard:
+If you then use the npx command for the wizard you will get this dependency error:
+
+```shell
+npm error ERESOLVE unable to resolve dependency tree
+│  npm error
+│  npm error While resolving: nextjs15_sentry_wizard_reproduction@0.1.0
+│  npm error Found: next@15.0.3-canary.1
+```
+
+So before attempting to use the wizard you need to manually update the package.json and this overrides block:
+
+```shell
+    "overrides": {
+        "next": "15.0.3-canary.1"
+    }
+```
+
+Then you can use the command to launch the sentry wizard:
 
 ```shell
 npx @sentry/wizard@latest -i nextjs
